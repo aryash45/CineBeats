@@ -15,13 +15,13 @@ router.post('/signup', async (req, res) => {
     }
 
     // Basic email validation
-    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: 'Invalid email format' });
     }
 
     // Password strength: min 8, 1 uppercase, 1 number
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\\d).{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
     if (!passwordRegex.test(password)) {
       return res.status(400).json({ error: 'Password must be at least 8 characters long, contain at least 1 uppercase letter and 1 number' });
     }
