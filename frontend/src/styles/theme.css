@@ -1,0 +1,113 @@
+:root {
+  /* Colors */
+  --accent-red: #ff6b6b;
+  --accent-teal: #4ecdc4;
+  --bg-primary: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --bg-secondary: #1a1a2e;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-bg-hover: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.1);
+
+  /* Typography */
+  --font-primary: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Light Theme Variables (overrides) */
+[data-theme='light'] {
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --card-bg: #ffffff;
+  --card-bg-hover: #f0f0f0;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a4a;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Common Component Styles */
+
+.btn {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn:hover {
+  background: var(--card-bg-hover);
+}
+
+.btn-primary {
+  background: var(--accent-teal);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #3eb5ad;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+}
+
+.btn-danger {
+  background: var(--accent-red);
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #eb5e5e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.input-field {
+  height: 44px;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+}
+
+[data-theme='light'] .input-field {
+  background: #fff;
+}
+
+.input-field:focus {
+  border-color: var(--accent-teal);
+  outline: none;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  background: var(--card-bg-hover);
+}
