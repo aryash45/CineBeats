@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
+const dotenv = require('dotenv');
 
 // Load environment variables
 dotenv.config();
@@ -37,6 +39,17 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Internal Server Error' });
 });
+
+// Serve Frontend in Production
+if (process.env.NODE_ENV === 'production' || process.env.RENDER) {
+  // Serve static files from the React frontend app
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+  
+  // Anything that doesn't match an API route goes to index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  });
+}
 
 // Start Server
 const PORT = process.env.PORT || 5000;
